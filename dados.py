@@ -19,6 +19,24 @@ def ler_lamen():
 
     return lamen
 
+def preparar_lamen(prato):
+    """Recebe as linhas lidas do CSV e devolve os dados"""
+    pratos = []
+    for ingredientes in prato:
+        livro = {
+            "variedade": ingredientes["variedade"],
+            "marca": ingredientes["marca"],
+            "estilo": ingredientes["estilo"],
+            "pais": ingredientes["pais"],
+            "estrelas": ingredientes["estrelas"]
+        }
+        pratos.append(livro)
+
+    return pratos
+
+
 if __name__ == "__main__":
-    lamen = ler_lamen()
-    print(f"{len(lamen)} opções de lamens")
+    """ Area de testes para as funções """
+
+    seu_lamen = preparar_lamen(ler_lamen())
+    print(f" Seu prato: {seu_lamen[0]} ")

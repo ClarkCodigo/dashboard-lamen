@@ -10,7 +10,7 @@ lamens.csv + [link da fonte original](https://www.theramenrater.com/resources-2/
 -
 
 ## Funcionalidades
-- [ ] Ler os dados do arquivo CSV do dataset.
+- [X] Ler os dados do arquivo CSV do dataset.
 - [ ] Converter as colunas que não estão num formato apropriado para os cálculos (números escritos como texto, valores por extenso, unidades junto do número, etc)
 - [ ] Mostrar no mínimo 3 métricas sobre o dataset
 - [ ] Classificar os registros em faixas a partir de uma coluna numérica e mostrar a faixa na tabela
