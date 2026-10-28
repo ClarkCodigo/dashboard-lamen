@@ -19,14 +19,21 @@ def classificar_nota(nota):
 def montar_tabela(lamens):
     """Prepara as linhas para a tabela exibida no Streamlit."""
     tabela = []
+
     for lamen in lamens:
-        qtd_estrelas = int(round(lamen["estrelas"]))
+        if not lamen["estrelas"] == 0.0:
+            qtd_estrelas = int(round(lamen["estrelas"]))
+            nota_lamen = f"{lamen['estrelas']:.1f} " + ("🍜" * qtd_estrelas)
+        else:
+            nota_lamen = "NA"
+
+
         linha = {
             "Variedade / Nome": lamen["variedade"],
             "Marca": lamen["marca"],
             "Estilo": lamen["estilo"],
             "País": lamen["pais"],
-            "Nota": f"{lamen['estrelas']:.1f} " + ("⭐" * qtd_estrelas),
+            "Nota": nota_lamen,
             "Avaliação": classificar_nota(lamen["estrelas"]),
         }
         tabela.append(linha)
@@ -74,14 +81,14 @@ def main():
     col1.metric("Total de Lámens", len(lamens))
 
     nota_media = dados.calcular_nota_media(lamens)
-    col2.metric("Nota Média Geral", f"{nota_media:.2f} ⭐")
+    col2.metric("Nota Média Geral", f"{nota_media:.2f} 🍜")
 
     qtd_top = dados.contar_cinco_estrelas(lamens)
     col3.metric("Lámens 5 Estrelas", qtd_top)
 
     melhor = dados.encontrar_melhor_avaliado(lamens)
     if melhor:
-        col4.metric("Melhor Avaliado", f"{melhor['estrelas']:.1f} ⭐")
+        col4.metric("Melhor Avaliado", f"{melhor['estrelas']:.1f} 🍜")
         col4.caption(f"{melhor['marca']} - {melhor['variedade']}")
 
     st.divider()
