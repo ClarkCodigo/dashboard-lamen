@@ -23,8 +23,8 @@ lamens.csv + [link da fonte original](https://www.theramenrater.com/resources-2/
 - [X] App publicado no Streamlit Community Cloud
 
 
-## Funcionalidade extra
-- [] Mais bem classificado (quantidade de estrelas), no país
+## Funcionalidade extra - incluir
+- [ ] Mais bem classificado (quantidade de estrelas), no país
 
 ## Como rodar
  **configuração basica do streamlit, deve ser configurado para esse projeto**
