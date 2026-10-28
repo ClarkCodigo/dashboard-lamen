@@ -108,18 +108,15 @@ def main():
     st.divider()
 
     # Filtros
-    col_busca, col_pais, col_marca = st.columns(3)
+    col_busca, col_pais = st.columns(2)
     busca = col_busca.text_input("Buscar por Nome ou Marca")
     pais_selecionado = col_pais.selectbox(
         "Filtrar por País", ["Todos"] + listar_paises(lamens)
     )
-    marca_selecionada = col_marca.selectbox(
-        "Filtrar por Marca", ["Todos"] + listar_marcas(lamens)
-    )
 
     # Aplicação dos filtros
     dados_de_paises = filtrar_por_pais(lamens, pais_selecionado)
-    dados_de_marcar = filtrar_por_marca(lamens, marca_selecionada)
+    dados_de_marcar = filtrar_por_marca(lamens, listar_marcas(lamens))
     encontrados = buscar_por_termo(dados_de_paises, dados_de_marcar, busca)
 
     qtd_encontrados = len(encontrados)
