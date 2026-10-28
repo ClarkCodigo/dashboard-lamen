@@ -30,9 +30,20 @@ Mais bem classificado (quantidade de estrelas), no país
  **configuração basica do streamlit, deve ser configurado para esse projeto**
 
 ```
-    python -m venv .venv
-    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass   # libera o script de ativação só nesta janela
-    .venv\Scripts\Activate.ps1
-    pip install -r requirements.txt
-    streamlit run app.py
+    # Criar o ambiente
+python -m venv .venv
+
+# Libera permissão de execução na sessão atual
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+# Ativar bash
+.venv\Scripts\Activate.ps1
+
+# Criar o ambiente
+
+# Ativar
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+streamlit run app.py
 ```
