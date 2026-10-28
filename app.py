@@ -1,6 +1,7 @@
 import streamlit as st
 import dados
 
+
 def classificar_nota(nota):
     """Classifica a avaliação em uma faixa de texto."""
     if nota >= 4.5:
@@ -43,14 +44,14 @@ def buscar_por_termo(lamens, busca):
         if termo in prato["variedade"].lower() or termo in prato["marca"].lower()
     ]
 
-#lista de paises
+
 def listar_paises(lamens):
     """Retorna a lista de países sem repetição e ordenada."""
-    paises = sorted(list({prato["pais"] for lamen in lamens if (prato := lamen)}))
+    paises = sorted(list({lamen["pais"] for lamen in lamens if "pais" in lamen}))
     return paises
 
 
-def filtrar_por_pais(lamens, pais): 
+def filtrar_por_pais(lamens, pais):
     """Filtra por país escolhido."""
     if pais == "Todos":
         return lamens
@@ -67,10 +68,7 @@ def main():
         st.error("Nenhum dado encontrado no arquivo CSV.")
         return
 
-    # Recupera o melhor país e sua média corretamente passando a lista completa
-    # melhor_pais, melhor_nota = dados.pais_com_melhor_avaliacao(lamens)
-
-    # Métricas Principais em 5 colunas na parte superior
+    # Métricas Principais em 4 colunas na parte superior
     col1, col2, col3, col4 = st.columns(4)
 
     col1.metric("Total de Lámens", len(lamens))
@@ -85,12 +83,6 @@ def main():
     if melhor:
         col4.metric("Melhor Avaliado", f"{melhor['estrelas']:.1f} ⭐")
         col4.caption(f"{melhor['marca']} - {melhor['variedade']}")
-
-    # if melhor_pais:
-    #     col5.metric("Melhor País (>4★)", f"{melhor_pais}")
-    #     col5.caption(f"Média: {melhor_nota:.2f} ⭐")
-    # else:
-    #     col5.metric("Melhor País (>4★)", "N/A")
 
     st.divider()
 
